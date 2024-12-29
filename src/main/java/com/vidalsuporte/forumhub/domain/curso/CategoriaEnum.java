@@ -1,6 +1,6 @@
 package com.vidalsuporte.forumhub.domain.curso;
 
-public enum Categoria {
+public enum CategoriaEnum {
     BACKEND,
     FULLSTACK,
     FRONTEND,

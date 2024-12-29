@@ -22,11 +22,11 @@ public class Curso {
 
     @Column(name = "categoria")
     @Enumerated(value = EnumType.STRING)
-    Categoria categoria;
+    CategoriaEnum categoriaEnum;
 
 
     public Curso(@Valid DadosCadastroCurso dadoscadastroCurso) {
         this.nome = dadoscadastroCurso.nome();
-        this.categoria = dadoscadastroCurso.categoria();
+        this.categoriaEnum = dadoscadastroCurso.categoriaEnum();
     }
 }

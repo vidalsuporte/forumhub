@@ -1,5 +1,4 @@
 package com.vidalsuporte.forumhub.infra.exception;
-
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
