@@ -2,10 +2,7 @@ package com.vidalsuporte.forumhub.domain.curso;
 
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity(name = "Curso")
 @Table(name = "cursos")
@@ -13,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
+@ToString
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

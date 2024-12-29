@@ -1,11 +1,12 @@
 package com.vidalsuporte.forumhub.domain.perfil;
 
 
+import com.vidalsuporte.forumhub.domain.usuario.Usuario;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Perfil")
 @Table(name = "perfis")
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
+@ToString
 public class Perfil {
 
     @Id
@@ -21,6 +23,15 @@ public class Perfil {
 
     @Enumerated(EnumType.STRING)
     private PerfilEnum perfil;
+
+    @ManyToMany(mappedBy = "perfis", fetch = FetchType.LAZY)
+    private List<Usuario> usuarios = new ArrayList<>();
+
+
+    public Perfil(String perfil) {
+        this.perfil = PerfilEnum.valueOf(perfil);
+    }
+
 
 
 }
