@@ -5,7 +5,7 @@ import java.util.List;
 public record DadosDetalhePerfil(Long id, PerfilEnum perfilEnum) {
 
     public DadosDetalhePerfil(Perfil perfil) {
-   this(perfil.getId(), perfil.getPerfil());
+   this(perfil.getId(), PerfilEnum.valueOf(String.valueOf(perfil.getPerfil())));
 
 
     }

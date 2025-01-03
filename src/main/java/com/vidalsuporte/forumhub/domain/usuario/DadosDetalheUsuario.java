@@ -19,15 +19,14 @@ public record DadosDetalheUsuario(
         String email,
 
 
-        String senha,
+        List<DadosDetalhePerfil> perfis,
 
-
-        List<DadosDetalhePerfil> perfis
+        Boolean ativo
 
 ) {
     public DadosDetalheUsuario(Usuario usuario) {
 
-        this(usuario.getId(), usuario.getNome(), usuario.getEmail(), usuario.getSenha(), usuario.getPerfis().stream().map(DadosDetalhePerfil::new).collect(Collectors.toList()));
+        this(usuario.getId(), usuario.getNome(), usuario.getEmail(), usuario.getPerfis().stream().map(DadosDetalhePerfil::new).collect(Collectors.toList()),usuario.getAtivo());
 
     }
 }

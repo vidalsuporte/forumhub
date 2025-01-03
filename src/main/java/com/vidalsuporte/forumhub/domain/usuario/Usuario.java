@@ -3,10 +3,7 @@ package com.vidalsuporte.forumhub.domain.usuario;
 import com.vidalsuporte.forumhub.domain.perfil.Perfil;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 
@@ -32,6 +29,7 @@ public class Usuario {
 
     private String senha;
 
+    @Setter
     private boolean ativo;
 
     @ManyToMany
@@ -55,5 +53,37 @@ public class Usuario {
         this.senha = dadosCadastroUsuario.senha();
         this.perfis = perfilList;
         this.ativo = true;
+    }
+
+
+    public void adicionarPerfil(Perfil perfil){
+        perfis.add(perfil);
+
+    }
+
+    public void removerPerfil(Perfil perfil){
+        perfis.remove(perfil);
+
+    }
+
+    public void atualizaDados(@Valid DadosAtualizarUsuario dadosAtualizarUsuario) {
+
+        if(dadosAtualizarUsuario.nome() != null){
+            this.nome = dadosAtualizarUsuario.nome();
+        }
+
+        if(dadosAtualizarUsuario.email() != null){
+            this.email = dadosAtualizarUsuario.email();
+        }
+
+        if(dadosAtualizarUsuario.senha() != null){
+            this.senha = dadosAtualizarUsuario.senha();
+        }
+
+    }
+
+
+    public Boolean getAtivo() {
+    return ativo;
     }
 }
