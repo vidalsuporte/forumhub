@@ -89,4 +89,6 @@ public class Usuario {
     public Boolean getAtivo() {
     return ativo;
     }
+
+
 }

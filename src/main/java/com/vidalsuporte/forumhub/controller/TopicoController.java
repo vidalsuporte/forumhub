@@ -1,9 +1,6 @@
 package com.vidalsuporte.forumhub.controller;
 
-import com.vidalsuporte.forumhub.domain.topico.DadosCadastroTopico;
-import com.vidalsuporte.forumhub.domain.topico.DadosDetalheTopico;
-import com.vidalsuporte.forumhub.domain.topico.DadosUriDetalheTopico;
-import com.vidalsuporte.forumhub.domain.topico.TopicoService;
+import com.vidalsuporte.forumhub.domain.topico.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -45,6 +42,21 @@ public class TopicoController {
     var page =  topicoService.listarTodos(pageable);
 
      return ResponseEntity.ok(page);
+    }
+
+
+    @PutMapping
+    public ResponseEntity<DadosDetalheTopico> atualizar(@RequestBody @Valid DadosAtualizacaoTopico dadosAtualizacaoTopico) {
+        var topico = topicoService.atualizar(dadosAtualizacaoTopico);
+        return ResponseEntity.ok(topico);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity Deletar (@PathVariable Long id){
+
+        topicoService.deletar(id);
+
+        return ResponseEntity.noContent().build();
     }
 
 

@@ -2,6 +2,7 @@ package com.vidalsuporte.forumhub.domain.topico;
 
 import com.vidalsuporte.forumhub.domain.curso.CursoRepository;
 import com.vidalsuporte.forumhub.domain.usuario.UsuarioRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -48,6 +49,21 @@ public class TopicoService {
     public Page<DadosDetalheTopico> listarTodos(Pageable pageable) {
 
         return topicoRepository.findAll(pageable).map(DadosDetalheTopico::new);
+
+    }
+
+
+    public DadosDetalheTopico atualizar(@Valid DadosAtualizacaoTopico dadosAtualizacaoTopico) {
+
+    var topico = topicoRepository.getReferenceById(dadosAtualizacaoTopico.id());
+    topico.atuaizaDados(dadosAtualizacaoTopico, usuarioRepository.findById(dadosAtualizacaoTopico.autorId()), cursoRepository.findById(dadosAtualizacaoTopico.cursoId()));
+
+    return new DadosDetalheTopico(topico);
+    }
+
+    public void deletar(Long id) {
+
+        topicoRepository.deleteById(id);
 
     }
 }

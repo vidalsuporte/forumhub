@@ -3,6 +3,7 @@ package com.vidalsuporte.forumhub.domain.topico;
 import com.vidalsuporte.forumhub.domain.curso.Curso;
 import com.vidalsuporte.forumhub.domain.usuario.Usuario;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -62,6 +63,23 @@ public class Topico {
             this.mensagem = mensagem;
 
             this.status = StatusEnum.valueOf(status);
+
+
+    }
+
+    public void atuaizaDados(@Valid DadosAtualizacaoTopico dadosAtualizacaoTopico, Optional<Usuario> autor, Optional<Curso> curso) {
+
+        if (dadosAtualizacaoTopico.titulo()!= null){
+            this.titulo = dadosAtualizacaoTopico.titulo();
+        }
+
+        if (dadosAtualizacaoTopico.mensagem()!= null){
+            this.mensagem = dadosAtualizacaoTopico.mensagem();
+        }
+
+        autor.ifPresent(usuario -> this.autor = usuario);
+
+        curso.ifPresent(valor -> this.curso = valor);
 
 
     }
