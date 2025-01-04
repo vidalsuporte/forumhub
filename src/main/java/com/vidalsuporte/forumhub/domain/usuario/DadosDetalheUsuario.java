@@ -29,4 +29,6 @@ public record DadosDetalheUsuario(
         this(usuario.getId(), usuario.getNome(), usuario.getEmail(), usuario.getPerfis().stream().map(DadosDetalhePerfil::new).collect(Collectors.toList()),usuario.getAtivo());
 
     }
+
+
 }

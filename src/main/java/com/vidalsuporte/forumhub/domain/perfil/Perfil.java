@@ -24,8 +24,8 @@ public class Perfil {
     @Enumerated(EnumType.STRING)
     private PerfilEnum perfil;
 
-    @ManyToMany(mappedBy = "perfis", fetch = FetchType.LAZY)
-    private List<Usuario> usuarios = new ArrayList<>();
+//    @ManyToMany(mappedBy = "perfis", fetch = FetchType.LAZY)
+//    private List<Usuario> usuarios = new ArrayList<>();
 
 
     public Perfil(String perfil) {

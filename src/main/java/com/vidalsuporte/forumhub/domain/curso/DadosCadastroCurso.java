@@ -9,6 +9,6 @@ public record DadosCadastroCurso(
         String nome,
 
         @NotNull
-        CategoriaEnum categoriaEnum
+        CategoriaEnum categoria
 ) {
 }

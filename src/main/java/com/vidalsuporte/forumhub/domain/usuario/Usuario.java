@@ -1,6 +1,7 @@
 package com.vidalsuporte.forumhub.domain.usuario;
 
 import com.vidalsuporte.forumhub.domain.perfil.Perfil;
+import com.vidalsuporte.forumhub.domain.topico.Topico;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.*;
@@ -37,6 +38,8 @@ public class Usuario {
     joinColumns = @JoinColumn(name = "usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "perfil_id"))
     private List<Perfil> perfis = new ArrayList<>();
+
+
 
 
     public Usuario(@Valid DadosCadastroUsuario dadosCadastroUsuario) {
