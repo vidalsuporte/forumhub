@@ -23,8 +23,7 @@ public class CursoService {
     }
 
     public Page<DadosDetalhamentoCurso> listartodos(Pageable pageable) {
-       var page =  cursoRepository.findAll(pageable).map(DadosDetalhamentoCurso::new);
-        return page;
+        return cursoRepository.findAll(pageable).map(DadosDetalhamentoCurso::new);
     }
 
 

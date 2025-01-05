@@ -1,5 +1,6 @@
 package com.vidalsuporte.forumhub.domain.topico;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vidalsuporte.forumhub.domain.curso.DadosDetalhamentoCurso;
 import com.vidalsuporte.forumhub.domain.usuario.DadosDetalheUsuario;
 
@@ -11,6 +12,7 @@ public record DadosUriDetalheTopico (
 
     String mensagem,
 
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     LocalDateTime dataCriacao,
 
     String autor,

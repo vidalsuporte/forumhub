@@ -1,6 +1,7 @@
 package com.vidalsuporte.forumhub.domain.topico;
 
 import com.vidalsuporte.forumhub.domain.curso.Curso;
+import com.vidalsuporte.forumhub.domain.resposta.Resposta;
 import com.vidalsuporte.forumhub.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -8,6 +9,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Entity(name = "Topico")
@@ -39,9 +41,9 @@ public class Topico {
     @JoinColumn(name = "curso_id")
     private Curso curso;
 
-//    @OneToMany
-
-//    private List<Resposta> Repostas;
+    @OneToMany
+    @JoinColumn(name = "reposta_id")
+    private List<Resposta> Repostas;
 
 
     public Topico(Optional<Usuario> autor, Optional<Curso> curso, LocalDateTime dataCriacao, String status, @NotNull String titulo, @NotNull String mensagem) {
