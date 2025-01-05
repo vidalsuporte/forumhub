@@ -1,5 +1,6 @@
 package com.vidalsuporte.forumhub.controller;
 
+import com.vidalsuporte.forumhub.controller.springdoc.InterfaceSpringDocPerfil;
 import com.vidalsuporte.forumhub.domain.perfil.DadosDetalhePerfil;
 import com.vidalsuporte.forumhub.domain.perfil.DadosPerfil;
 import com.vidalsuporte.forumhub.domain.perfil.PerilSevice;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("perfis")
-public class PrefilController {
+public class PrefilController implements InterfaceSpringDocPerfil {
 
     @Autowired
     PerilSevice perfilSevice;

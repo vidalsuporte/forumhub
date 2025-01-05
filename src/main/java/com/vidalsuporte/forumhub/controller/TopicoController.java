@@ -1,5 +1,6 @@
 package com.vidalsuporte.forumhub.controller;
 
+import com.vidalsuporte.forumhub.controller.springdoc.InterfaceSpringDocTopico;
 import com.vidalsuporte.forumhub.domain.topico.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("topicos")
-public class TopicoController {
+public class TopicoController  implements InterfaceSpringDocTopico {
 
     @Autowired
     TopicoService topicoService;

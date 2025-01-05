@@ -1,5 +1,6 @@
 package com.vidalsuporte.forumhub.controller;
 
+import com.vidalsuporte.forumhub.controller.springdoc.InterfaceSpringDocResposta;
 import com.vidalsuporte.forumhub.domain.resposta.*;
 import com.vidalsuporte.forumhub.domain.topico.DadosCadastroTopico;
 import com.vidalsuporte.forumhub.domain.topico.DadosDetalheTopico;
@@ -15,7 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("respostas")
-public class RespostaController {
+public class RespostaController implements InterfaceSpringDocResposta {
 
     @Autowired
     RespostaService respostaService;

@@ -1,5 +1,6 @@
 package com.vidalsuporte.forumhub.controller;
 
+import com.vidalsuporte.forumhub.controller.springdoc.InterfaceSpringDocUsuario;
 import com.vidalsuporte.forumhub.domain.usuario.DadosAtualizarUsuario;
 import com.vidalsuporte.forumhub.domain.usuario.DadosCadastroUsuario;
 import com.vidalsuporte.forumhub.domain.usuario.DadosDetalheUsuario;
@@ -15,7 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("usuarios")
-public class UsuarioController {
+public class UsuarioController implements InterfaceSpringDocUsuario {
     @Autowired
     UsuarioService usuarioService;
 

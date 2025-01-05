@@ -1,5 +1,6 @@
 package com.vidalsuporte.forumhub.controller;
 
+import com.vidalsuporte.forumhub.controller.springdoc.InterfaceSpringDocCurso;
 import com.vidalsuporte.forumhub.domain.curso.CursoService;
 import com.vidalsuporte.forumhub.domain.curso.DadosCadastroCurso;
 import com.vidalsuporte.forumhub.domain.curso.DadosDetalhamentoCurso;
@@ -14,13 +15,13 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("cursos")
-public class CursoController {
+public class CursoController implements InterfaceSpringDocCurso {
 
     @Autowired
     CursoService cursoService;
 
 
-    @PutMapping
+    @PostMapping
     public ResponseEntity<DadosDetalhamentoCurso> cadastar(@RequestBody @Valid DadosCadastroCurso dadoscadastroCurso, UriComponentsBuilder uriBilder){
 
        var dadosDetalhamentoCurso = cursoService.salvar(dadoscadastroCurso);
