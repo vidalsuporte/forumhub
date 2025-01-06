@@ -2,6 +2,9 @@ package com.vidalsuporte.forumhub.controller;
 
 import com.vidalsuporte.forumhub.controller.springdoc.InterfaceSpringDocAtenticacao;
 import com.vidalsuporte.forumhub.domain.usuario.DadosAutenticacao;
+import com.vidalsuporte.forumhub.domain.usuario.Usuario;
+import com.vidalsuporte.forumhub.infra.security.TokenJWT;
+import com.vidalsuporte.forumhub.infra.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +19,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/login")
 public class AutenticacaoController implements InterfaceSpringDocAtenticacao {
 
-@Autowired
-    AuthenticationManager authenticationManager;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity efetuarLogin (@RequestBody @Valid DadosAutenticacao usuario){
-var token = new UsernamePasswordAuthenticationToken(usuario.login(), usuario.senha());
-    var autentication = authenticationManager.authenticate(token);
+    public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacao usuario) {
+        var token = new UsernamePasswordAuthenticationToken(usuario.login(), usuario.senha());
+        var autentication = authenticationManager.authenticate(token);
+        var tokenJWT = tokenService.gerarToken((Usuario) autentication.getPrincipal());
 
-return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new TokenJWT(tokenJWT));
 
     }
 }

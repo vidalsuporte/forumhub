@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,8 +22,12 @@ public class UsuarioService {
    @Autowired
     PerfilRepository perfilRepository;
 
+   @Autowired
+    BCryptPasswordEncoder  bCryptPasswordEncoder;
+
+
     public DadosDetalheUsuario salvar(@Valid DadosCadastroUsuario dadosCadastroUsuario) {
-        System.out.println(dadosCadastroUsuario);
+
         var perfis = dadosCadastroUsuario.perfis();
         List<Perfil> perfilList = new ArrayList<>();
         for (int i = 0; i < perfis.size(); i++) {
@@ -34,7 +39,7 @@ public class UsuarioService {
 
         System.out.println(perfilList);
 
-        var usuario = usuarioRepository.save(new Usuario(dadosCadastroUsuario, perfilList));
+        var usuario = usuarioRepository.save(new Usuario(dadosCadastroUsuario, perfilList, bCryptPasswordEncoder.encode(dadosCadastroUsuario.senha())));
 
 
         System.out.println(usuario);

@@ -54,13 +54,15 @@ public class Usuario implements UserDetails {
         this.ativo = true;
     }
 
-    public Usuario(@Valid DadosCadastroUsuario dadosCadastroUsuario, List<Perfil> perfilList) {
+    public Usuario(@Valid DadosCadastroUsuario dadosCadastroUsuario, List<Perfil> perfilList, String senhaEncode) {
         this.nome = dadosCadastroUsuario.nome();
         this.email = dadosCadastroUsuario.email();
-        this.senha = dadosCadastroUsuario.senha();
+        this.senha = senhaEncode;
         this.perfis = perfilList;
         this.ativo = true;
     }
+
+
 
 
     public void adicionarPerfil(Perfil perfil){
