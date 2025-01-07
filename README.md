@@ -254,6 +254,6 @@ Os tokens têm validade limitada e devem ser renovados periodicamente.
 
 ## Aprimoramentos Futuros
 
-- Validação de proprietário do tópico/reposta;
+- Validação de proprietário do tópico/resposta;
 - Delete de tópico somente proprietário, admin e moderador;
 - Edição de tópico somente proprietário, admin e moderador;
