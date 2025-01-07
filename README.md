@@ -238,7 +238,8 @@ Install my-project with npm
 - **GET** `/perfis`
   - Retorna a lista de todos os perfis cadastrados no sistema.
 
----## Segurança
+---
+## Segurança
 
 Os endpoints Login, Listar e buscar tópicos e respostas estão liberados o outros endpoints protegidos requerem autenticação por meio de um token JWT. Após o login, o token gerado deve ser incluído no cabeçalho das requisições subsequentes:
 
