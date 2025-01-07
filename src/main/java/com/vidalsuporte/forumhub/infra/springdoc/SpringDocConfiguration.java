@@ -1,9 +1,11 @@
 package com.vidalsuporte.forumhub.infra.springdoc;
 
+import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.tags.Tag;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,8 +38,19 @@ public class SpringDocConfiguration {
                                 new Tag().name("Usuário").description("EndPoint para gerenciamento dos Usuários do Forum Hub"),
                                 new Tag().name("Atenticação").description("EndPoint para gerenciamento de autenticação do Usuário")
                         )
-                );
+                )
+                .components(new Components()
+                        .addSecuritySchemes("bearer-key",
+                                new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")));
 
 
     }
+
+
+
+
+
+
+
+
 }

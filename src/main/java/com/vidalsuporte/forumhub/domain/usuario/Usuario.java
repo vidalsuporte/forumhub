@@ -1,6 +1,8 @@
 package com.vidalsuporte.forumhub.domain.usuario;
 
+import com.vidalsuporte.forumhub.domain.perfil.DadosPerfil;
 import com.vidalsuporte.forumhub.domain.perfil.Perfil;
+import com.vidalsuporte.forumhub.domain.perfil.PerfilEnum;
 import com.vidalsuporte.forumhub.domain.topico.Topico;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -37,7 +39,7 @@ public class Usuario implements UserDetails {
     @Setter
     private boolean ativo;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_perfil",
     joinColumns = @JoinColumn(name = "usuario_id"),
             inverseJoinColumns = @JoinColumn(name = "perfil_id"))
@@ -99,8 +101,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return  List.of();
-
+        return perfis.stream().map(p-> new SimpleGrantedAuthority("ROLE_" + p.getPerfil().toString())).toList();
     }
 
     @Override

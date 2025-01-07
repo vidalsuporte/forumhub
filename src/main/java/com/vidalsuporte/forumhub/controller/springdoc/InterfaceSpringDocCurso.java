@@ -5,6 +5,7 @@ import com.vidalsuporte.forumhub.domain.curso.DadosDetalhamentoCurso;
 import com.vidalsuporte.forumhub.domain.perfil.DadosDetalhePerfil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Tag(name = "Curso")
+@SecurityRequirement(name = "bearer-key")
 public interface InterfaceSpringDocCurso {
 
     @Operation(summary = "Cadastra Curso no FormHub.")

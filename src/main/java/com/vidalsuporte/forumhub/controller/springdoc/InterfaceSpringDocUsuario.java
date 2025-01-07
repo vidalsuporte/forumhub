@@ -5,6 +5,7 @@ import com.vidalsuporte.forumhub.domain.usuario.DadosCadastroUsuario;
 import com.vidalsuporte.forumhub.domain.usuario.DadosDetalheUsuario;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
@@ -14,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.util.UriComponentsBuilder;
-
+@SecurityRequirement(name = "bearer-key")
 @Tag(name = "Usuário")
 public interface InterfaceSpringDocUsuario {
 

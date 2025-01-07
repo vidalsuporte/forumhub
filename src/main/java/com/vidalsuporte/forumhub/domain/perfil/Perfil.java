@@ -4,6 +4,7 @@ package com.vidalsuporte.forumhub.domain.perfil;
 import com.vidalsuporte.forumhub.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 @ToString
-public class Perfil {
+public class Perfil  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +32,6 @@ public class Perfil {
     public Perfil(String perfil) {
         this.perfil = PerfilEnum.valueOf(perfil);
     }
-
 
 
 }
