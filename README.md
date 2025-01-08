@@ -4,7 +4,7 @@
  
 ## Desenvolvedor
 
-- [André Gonçalve Vidal](https://github.com/vidalsuporte)
+- [André Gonçalves Vidal](https://github.com/vidalsuporte)
 
 
 ## Informações Gerais
