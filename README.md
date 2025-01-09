@@ -45,7 +45,9 @@
 **1 - Pré-requisitos:**
 
 **Java 17+**
+
 **Maven**
+
 **Mysql**
 
 **2 - Clonar o Repositório:**
