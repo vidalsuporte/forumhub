@@ -75,14 +75,24 @@ spring.datasource.username=${DATABASE_USER}
 spring.datasource.password=${DATABASE_PASSWORD}
 ```
 
-**4 - Iniciar o Projeto:**
+**4 - SecretKey JWT**
+
+Atualize as informações no arquivo application.properties ou crie variáveis de ambiente :
+
+```
+api.security.token.secret=${Secretkey}
+```
+
+
+**5 - Iniciar o Projeto:**
 ```
 mvn spring-boot:run
 ```
 
-**5 - Acessar a Documentação:**
+**6 - Acessar a Documentação:**
 
 Abra http://localhost:8080/swagger-ui.html no navegador.
+
 ## Installation
 
 Install my-project with npm
@@ -249,11 +259,7 @@ Authorization: Bearer {token}
 
 Os tokens têm validade limitada e devem ser renovados periodicamente.
 
-Para configurar a assinatura do JWT configurar essa variavél de ambiente
 
-```
-api.security.token.secret=${Secretkey}
-```
 
 ## Aprimoramentos Futuros
 
