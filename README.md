@@ -249,8 +249,11 @@ Authorization: Bearer {token}
 
 Os tokens têm validade limitada e devem ser renovados periodicamente.
 
+Para configurar a assinatura do JWT configurar essa variavél de ambiente
 
-
+```
+api.security.token.secret=${Secretkey}
+```
 
 ## Aprimoramentos Futuros
 
