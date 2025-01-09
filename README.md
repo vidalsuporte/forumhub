@@ -44,11 +44,9 @@
 ## Como Configurar e Executar o Projeto
 **1 - Pré-requisitos:**
 
-![Java 17](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
-
-![Maven](https://img.shields.io/badge/apache_maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
-
-![Mysql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+**Java 17+**
+**Maven**
+**Mysql**
 
 **2 - Clonar o Repositório:**
 
