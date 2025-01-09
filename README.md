@@ -44,11 +44,11 @@
 ## Como Configurar e Executar o Projeto
 **1 - Pré-requisitos:**
 
-**Java 17+**
+- **Java 17+**
 
-**Maven**
+- **Maven**
 
-**Mysql**
+- **Mysql**
 
 **2 - Clonar o Repositório:**
 
