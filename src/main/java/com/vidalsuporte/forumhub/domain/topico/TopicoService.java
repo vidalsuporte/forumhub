@@ -48,7 +48,7 @@ public class TopicoService {
 
     public Page<DadosDetalheTopico> listarTodos(Pageable pageable) {
 
-        return topicoRepository.findAll(pageable).map(DadosDetalheTopico::new);
+        return topicoRepository.findAllByStatusAtivo(pageable).map(DadosDetalheTopico::new);
 
     }
 
@@ -56,14 +56,18 @@ public class TopicoService {
     public DadosDetalheTopico atualizar(@Valid DadosAtualizacaoTopico dadosAtualizacaoTopico) {
 
     var topico = topicoRepository.getReferenceById(dadosAtualizacaoTopico.id());
-    topico.atuaizaDados(dadosAtualizacaoTopico, usuarioRepository.findById(dadosAtualizacaoTopico.autorId()), cursoRepository.findById(dadosAtualizacaoTopico.cursoId()));
+    var autor = dadosAtualizacaoTopico.autorId()==null ? topico.getAutor().getId(): dadosAtualizacaoTopico.autorId();
+    var curso = dadosAtualizacaoTopico.cursoId()==null ? topico.getCurso().getId(): dadosAtualizacaoTopico.cursoId();
+
+    topico.atuaizaDados(dadosAtualizacaoTopico, usuarioRepository.findById(autor), cursoRepository.findById(curso));
 
     return new DadosDetalheTopico(topico);
     }
 
     public void deletar(Long id) {
-
-        topicoRepository.deleteById(id);
+        var topico = topicoRepository.findById(id).get();
+        topico.atualizaStatus("INATIVO");
+        topicoRepository.save(topico);
 
     }
 }

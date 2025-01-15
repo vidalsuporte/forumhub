@@ -4,5 +4,6 @@ public enum StatusEnum {
 
     ATIVO,
     BLOQUEADO,
-    FECHADO;
+    FECHADO,
+    INATIVO;
 }

@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 public record DadosAtualizacaoTopico(
 
         @NotNull
-                Long id,
+        Long id,
 
         String titulo,
 

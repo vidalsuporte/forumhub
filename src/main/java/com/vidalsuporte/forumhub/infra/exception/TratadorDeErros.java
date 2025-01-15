@@ -5,6 +5,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 
@@ -27,6 +28,17 @@ public class TratadorDeErros {
         var erros = ex.getFieldErrors();
         return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
     }
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity tratarRuntimeException(RuntimeException ex) {
+
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
+    @ExceptionHandler(HttpClientErrorException.Forbidden.class)
+    public ResponseEntity tratarRuntimeException(HttpClientErrorException.Forbidden ex) {
+
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
+
 
 
     private record DadosErroValidacao(String campo, String erro) {

@@ -85,4 +85,8 @@ public class Topico {
 
 
     }
+
+    public void atualizaStatus(String inativo) {
+        this.status = StatusEnum.valueOf(inativo);
+    }
 }
