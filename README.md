@@ -56,8 +56,81 @@
 git clone https://github.com/seu-usuario/forum-hub.git
 cd forum-hub
 ```
+**3 - Estrutura de Pastas**
+````
+ForumHub/
+├── .mvn/                      # Arquivos de configuração do Maven Wrapper.
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com.vidalsuporte.forumhub/
+│   │   │       ├── controller/
+│   │   │       │   ├── springdoc/
+│   │   │       │   │   ├── AutenticacaoController.java
+│   │   │       │   │   ├── CursoController.java
+│   │   │       │   │   ├── PerfilController.java
+│   │   │       │   │   ├── RespostaController.java
+│   │   │       │   │   ├── TopicoController.java
+│   │   │       │   │   └── UsuarioController.java
+│   │   │       ├── domain/
+│   │   │       │   ├── curso/
+│   │   │       │   ├── perfil/
+│   │   │       │   ├── resposta/
+│   │   │       │   ├── topico/
+│   │   │       │   └── usuario/
+│   │   │       ├── infra/
+│   │   │       │   ├── exception/
+│   │   │       │   ├── security/
+│   │   │       │   └── springdoc/
+│   │   │       └── ForumDesafioApplication.java
+│   │   ├── resources/
+│   │   │   ├── db.migration/
+│   │   │   │   ├── V1_create-table-cursos.sql
+│   │   │   │   ├── V2_create-table-perfis.sql
+│   │   │   │   ├── V3_create-table-usuarios.sql
+│   │   │   │   ├── V4_create-table-usuario_perfil.sql
+│   │   │   │   ├── V5_alter-table-usuarios-add-column-ativo.sql
+│   │   │   │   ├── V6_create-table-Topicos.sql
+│   │   │   │   └── V7_create-table-respostas.sql
+│   │   │   └── application.properties
+│   │   └── test/              # Testes automatizados do projeto.
+├── target/                    # Diretório gerado pelo Maven com artefatos da compilação.
+├── .gitignore                 # Configuração para ignorar arquivos no Git.
+├── HELP.md                    # Arquivo de ajuda sobre o projeto.
+├── mvnw                       # Script do Maven Wrapper.
+├── mvnw.cmd                   # Script do Maven Wrapper para Windows.
+├── pom.xml                    # Arquivo de configuração principal do Maven.
+└── README.md                  # Arquivo de documentação do projeto.
+````
+## Tabela de Informações
 
-**3 - Configurar o Banco de Dados:**
+| **Caminho**                           | **Descrição**                                                                           |
+|---------------------------------------|---------------------------------------------------------------------------------------|
+| **.mvn/**                             | Configurações do Maven Wrapper para execução do projeto sem uma instalação local.     |
+| **src/main/java/**                    | Contém o código-fonte principal do projeto.                                           |
+| **controller/**                       | Define os controladores responsáveis por processar requisições e respostas da API.    |
+| **springdoc/**                        | Interface dos controladores que documentam os endpoints utilizando Swagger/OpenAPI.                 |
+| **domain/**                           | Contém as entidades do modelo de dados do sistema organizadas por domínio.            |
+| **infra/**                            | Reúne funcionalidades de suporte, como exceções, segurança e documentação.            |
+| **ForumDesafioApplication.java**      | Classe principal responsável por inicializar a aplicação Spring Boot.                 |
+| **resources/**                        | Arquivos de configuração e recursos auxiliares para a aplicação.                      |
+| **db.migration/**                     | Scripts de migração de banco de dados para criação e modificação de tabelas (Flyway). |
+| **application.properties**            | Configurações gerais do Spring Boot (ex.: banco de dados, autenticação, etc.).        |
+| **test/**                             | Código para realização de testes automatizados.                                       |
+| **target/**                           | Diretório gerado pelo Maven com os artefatos da aplicação, como `JAR` ou logs.        |
+| **.gitignore**                        | Arquivo para configurar exclusão de arquivos no controle de versão Git.               |
+| **HELP.md**                           | Documentação auxiliar sobre o projeto.                                                |
+| **mvnw** / **mvnw.cmd**               | Scripts do Maven Wrapper que permitem executar o Maven sem instalá-lo diretamente.    |
+| **pom.xml**                           | Configuração de dependências e plugins necessários para o projeto Maven.              |
+| **README.md**                         | Documentação principal do projeto, contendo detalhes de funcionamento, instalação, etc.|
+
+---
+
+
+
+
+
+**4 - Configurar o Banco de Dados:**
 
 Crie um banco de dados no MySQL.
 
@@ -75,7 +148,7 @@ spring.datasource.username=${DATABASE_USER}
 spring.datasource.password=${DATABASE_PASSWORD}
 ```
 
-**4 - SecretKey JWT**
+**5 - SecretKey JWT**
 
 Atualize as informações no arquivo application.properties ou crie variáveis de ambiente :
 
@@ -84,12 +157,12 @@ api.security.token.secret=${Secretkey}
 ```
 
 
-**5 - Iniciar o Projeto:**
+**6 - Iniciar o Projeto:**
 ```
 mvn spring-boot:run
 ```
 
-**6 - Acessar a Documentação:**
+**7 - Acessar a Documentação:**
 
 Abra http://localhost:8080/swagger-ui.html no navegador.
 
