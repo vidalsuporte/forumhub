@@ -1,5 +1,6 @@
 package com.vidalsuporte.forumhub.domain.usuario;
 
+import com.vidalsuporte.forumhub.domain.perfil.DadosPerfil;
 import com.vidalsuporte.forumhub.domain.perfil.Perfil;
 import com.vidalsuporte.forumhub.domain.perfil.PerfilEnum;
 import com.vidalsuporte.forumhub.domain.perfil.PerfilRepository;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,20 +32,19 @@ public class UsuarioService {
 
         var perfis = dadosCadastroUsuario.perfis();
         List<Perfil> perfilList = new ArrayList<>();
-        for (int i = 0; i < perfis.size(); i++) {
+        boolean admin = false;
+        for (DadosPerfil perfi : perfis) {
 
-            perfilList.add(perfilRepository.findByPerfil(PerfilEnum.valueOf(perfis.get(i).perfil())).get());
+            perfilList.add(perfilRepository.findByPerfil(PerfilEnum.valueOf(perfi.perfil())).get());
 
+            admin = perfi.perfil().equals("ADMINISTRADOR");
         }
 
-
-        System.out.println(perfilList);
+//        if (admin) {
+//            usuarioRepository.deleteByNome("admin");
+//        }
 
         var usuario = usuarioRepository.save(new Usuario(dadosCadastroUsuario, perfilList, bCryptPasswordEncoder.encode(dadosCadastroUsuario.senha())));
-
-
-        System.out.println(usuario);
-        System.out.println("antes de salvar");
         return new DadosDetalheUsuario(usuario);
     }
 
