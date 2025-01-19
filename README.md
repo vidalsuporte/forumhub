@@ -91,7 +91,8 @@ ForumHub/
 │   │   │   │   ├── V4_create-table-usuario_perfil.sql
 │   │   │   │   ├── V5_alter-table-usuarios-add-column-ativo.sql
 │   │   │   │   ├── V6_create-table-Topicos.sql
-│   │   │   │   └── V7_create-table-respostas.sql
+│   │   │   │   ├── V7_create-table-respostas.sql
+│   │   │   │   └── V8_initialize-table-perfis.sql
 │   │   │   └── application.properties
 │   │   └── test/              # Testes automatizados do projeto.
 ├── target/                    # Diretório gerado pelo Maven com artefatos da compilação.
@@ -165,6 +166,17 @@ mvn spring-boot:run
 **7 - Acessar a Documentação:**
 
 Abra http://localhost:8080/swagger-ui.html no navegador.
+
+**8 - Login inicial**
+
+O login inicial do ForumHub pela uri("http://localhost:8080/login") metodo POST enviar as seguintes informações para inicializar o banco com os perfis e ativar usuario admin
+```
+{
+  "login": "admin@admin.com",
+  "senha": "admin"
+}
+
+```
 
 ## Installation
 
