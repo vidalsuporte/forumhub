@@ -66,4 +66,9 @@ public class UsuarioService {
 
 
     }
+
+    public boolean bancoInicilizado() {
+
+        return usuarioRepository.findAll().isEmpty();
+    }
 }
