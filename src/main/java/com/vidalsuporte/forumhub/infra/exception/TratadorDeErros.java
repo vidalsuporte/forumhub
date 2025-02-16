@@ -1,6 +1,7 @@
 package com.vidalsuporte.forumhub.infra.exception;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -39,6 +40,10 @@ public class TratadorDeErros {
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
 
+    @ExceptionHandler(InternalAuthenticationServiceException.class)
+    public ResponseEntity trataInternalAuthenticationServiceException(InternalAuthenticationServiceException ex){
+        return ResponseEntity.badRequest().body("Login ou Senha inválidos!");
+    }
 
 
     private record DadosErroValidacao(String campo, String erro) {

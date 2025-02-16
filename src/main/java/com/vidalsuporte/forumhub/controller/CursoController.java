@@ -1,6 +1,7 @@
 package com.vidalsuporte.forumhub.controller;
 
 import com.vidalsuporte.forumhub.controller.springdoc.InterfaceSpringDocCurso;
+import com.vidalsuporte.forumhub.curso.DadosAtualizaCurso;
 import com.vidalsuporte.forumhub.domain.curso.CursoService;
 import com.vidalsuporte.forumhub.domain.curso.DadosCadastroCurso;
 import com.vidalsuporte.forumhub.domain.curso.DadosDetalhamentoCurso;
@@ -35,5 +36,20 @@ public class CursoController implements InterfaceSpringDocCurso {
       var page = cursoService.listartodos(pageable);
       return ResponseEntity.ok(page);
     }
+
+    @PutMapping
+    public ResponseEntity<DadosDetalhamentoCurso> atualizar(@RequestBody @Valid DadosAtualizaCurso dadosAtualizaCurso){
+
+        var cursoAtualizado = cursoService.atualizar(dadosAtualizaCurso);
+
+        return ResponseEntity.ok(cursoAtualizado);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DadosDetalhamentoCurso> detalhar(@PathVariable Long id) {
+        var curso = cursoService.detalhar(id);
+        return ResponseEntity.ok(curso);
+    }
+
 
 }

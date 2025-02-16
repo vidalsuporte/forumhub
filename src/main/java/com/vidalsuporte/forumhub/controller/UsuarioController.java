@@ -43,7 +43,7 @@ public class UsuarioController implements InterfaceSpringDocUsuario {
 
     @GetMapping("/{id}")
     public ResponseEntity<DadosDetalheUsuario> BuscaPorId(@PathVariable Long id){
-        return ResponseEntity.ok(usuarioService.bucaPorId(id));
+        return ResponseEntity.ok(usuarioService.buscaPorId(id));
 
     }
 

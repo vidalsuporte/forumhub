@@ -1,5 +1,6 @@
 package com.vidalsuporte.forumhub.domain.curso;
 
+import com.vidalsuporte.forumhub.curso.DadosAtualizaCurso;
 import com.vidalsuporte.forumhub.domain.topico.Topico;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
@@ -31,5 +32,16 @@ public class Curso {
     public Curso(@Valid DadosCadastroCurso dadoscadastroCurso) {
         this.nome = dadoscadastroCurso.nome();
         this.categoriaEnum = dadoscadastroCurso.categoria();
+    }
+
+    public void atualizaDados(@Valid DadosAtualizaCurso dadosAtualizaCurso) {
+
+        if(dadosAtualizaCurso.nome() != null)
+    this.nome  = dadosAtualizaCurso.nome();
+
+         if (dadosAtualizaCurso.categoriaEnum() !=  null)
+    this.categoriaEnum  =  dadosAtualizaCurso.categoriaEnum();
+
+
     }
 }

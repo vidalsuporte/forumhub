@@ -4,4 +4,6 @@ public enum PerfilEnum {
     ADMINISTRADOR,
     MODERADOR,
     USUARIO;
+
+
 }

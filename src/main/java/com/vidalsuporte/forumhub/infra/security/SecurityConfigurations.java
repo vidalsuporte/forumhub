@@ -30,6 +30,7 @@ public class SecurityConfigurations {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
                     req.requestMatchers(HttpMethod.POST, "/login").permitAll();
+                    req.requestMatchers(HttpMethod.GET, "/inicializarBancoDeDados").permitAll();
                     req.requestMatchers(HttpMethod.GET, "/topicos","/respostas","/respostas/{id}","/topicos/{id}").permitAll();
                     req.requestMatchers(HttpMethod.GET,"/cursos").authenticated();
                     req.requestMatchers("/cursos","/usuarios").hasRole("ADMINISTRADOR");
