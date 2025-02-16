@@ -11,10 +11,6 @@ public record DadosCadastroResposta(
         String mensagem,
 
         @NotNull
-        Long topico_id,
-
-        @NotNull
-        Long autor_id
-
-) {
+        Long topico_id
+        ) {
 }

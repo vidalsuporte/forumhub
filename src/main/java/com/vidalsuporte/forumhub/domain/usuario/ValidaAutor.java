@@ -3,7 +3,7 @@ package com.vidalsuporte.forumhub.domain.usuario;
 import com.vidalsuporte.forumhub.domain.perfil.Perfil;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-public class ValidacaoAutor {
+public class ValidaAutor {
 
     public static  boolean validaAutor(long id){
 

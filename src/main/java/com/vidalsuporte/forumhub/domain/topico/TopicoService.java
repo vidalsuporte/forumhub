@@ -1,10 +1,9 @@
 package com.vidalsuporte.forumhub.domain.topico;
 
 import com.vidalsuporte.forumhub.domain.curso.CursoRepository;
-import com.vidalsuporte.forumhub.domain.perfil.Perfil;
 import com.vidalsuporte.forumhub.domain.usuario.Usuario;
 import com.vidalsuporte.forumhub.domain.usuario.UsuarioRepository;
-import com.vidalsuporte.forumhub.domain.usuario.ValidacaoAutor;
+import com.vidalsuporte.forumhub.domain.usuario.ValidaAutor;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,9 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 
 @Service
 public class TopicoService {
@@ -70,8 +66,8 @@ public class TopicoService {
 
     var topico = topicoRepository.getReferenceById(dadosAtualizacaoTopico.id());
 
-    if(ValidacaoAutor.validaAutor(topico.getAutor().getId())){
-        throw new RuntimeException( "Somente o Autor ou Gestores podem editar o Tópico!");
+    if(ValidaAutor.validaAutor(topico.getAutor().getId())){
+        throw new RuntimeException( "Somente o Autor ou os Gestores podem editar o Tópico!");
     }
 
 
