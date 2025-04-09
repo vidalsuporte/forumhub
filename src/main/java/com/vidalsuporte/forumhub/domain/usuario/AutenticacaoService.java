@@ -15,6 +15,6 @@ private UsuarioRepository usuarioRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        return usuarioRepository.findByEmail(username);
+        return usuarioRepository.findByEmail(username).get();
     }
 }

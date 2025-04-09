@@ -46,7 +46,7 @@ public class UsuarioService {
 
             admin = perfi.perfil().equals("ADMINISTRADOR");
         }
-        if (admin && !usuarioRepository.findByEmail("admin@admin.com").equals("null")) {
+        if (admin && usuarioRepository.findByEmail("admin@admin.com").isPresent()) {
             var user = usuarioRepository.findByNome("admin");
             usuarioRepository.removeUsuarioperfil(user.getId());
             usuarioRepository.deleteById(user.getId());
